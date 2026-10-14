@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escapa de la Técnica — Proyecto C++</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<!--
+    ✏️ PARA EDITAR TUS DATOS (nombre, escuela, año):
+    Buscá la sección "TARJETA DE PRESENTACIÓN" un poco más abajo
+    y reemplazá el texto entre corchetes por el tuyo.
+-->
+
+<!-- ===== HAMBURGER BUTTON (siempre visible) ===== -->
+<button class="nav-hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menú">
+    <span></span><span></span><span></span>
+</button>
+
+<!-- ===== BACKDROP ===== -->
+<div class="drawer-backdrop" id="backdrop" onclick="closeDrawer()"></div>
+
+<!-- ===== DRAWER LATERAL ===== -->
+<nav class="nav-drawer" id="navDrawer">
+    <div class="nav-drawer-inner">
+
+        <a href="#" class="nav-logo" onclick="closeDrawer()">
+            <div class="nav-logo-icon"><img src="logo.png" alt="Escape from School"></div>
+            <span class="nav-logo-text">Escapa<span>Técnica</span></span>
+        </a>
+
+        <div class="nav-links">
+            <div class="nav-section-label" data-es="Contenido" data-en="Content">Contenido</div>
+            <a href="#indice" class="nav-link" onclick="closeDrawer()" data-es="Índice" data-en="Index">
+                <span class="dot"></span>Índice
+            </a>
+
+            <div class="nav-section-label" data-es="El proyecto" data-en="The project">El proyecto</div>
+            <a href="#descripcion" class="nav-link" onclick="closeDrawer()" data-es="Descripción" data-en="Description">
+                <span class="dot"></span>Descripción
+            </a>
+            <a href="#argumento" class="nav-link" onclick="closeDrawer()" data-es="Argumento" data-en="Story">
+                <span class="dot"></span>Argumento
+            </a>
+            <a href="#mecanicas" class="nav-link" onclick="closeDrawer()" data-es="Mecánicas de juego" data-en="Gameplay mechanics">
+                <span class="dot"></span>Mecánicas de juego
+            </a>
+
+            <div class="nav-section-label" data-es="Aspectos técnicos" data-en="Technical aspects">Aspectos técnicos</div>
+            <a href="#materias" class="nav-link" onclick="closeDrawer()" data-es="Materias y desafíos" data-en="Subjects & challenges">
+                <span class="dot"></span>Materias y desafíos
+            </a>
+            <a href="#tecnologias" class="nav-link" onclick="closeDrawer()" data-es="Tecnologías usadas" data-en="Technologies used">
+                <span class="dot"></span>Tecnologías usadas
+            </a>
+            <a href="#codigo" class="nav-link" onclick="closeDrawer()" data-es="Estructura del código" data-en="Code structure">
+                <span class="dot"></span>Estructura del código
+            </a>
+        </div>
+
+        <div class="nav-bottom">
+            <div class="lang-selector" id="langSelector">
+                <button class="lang-trigger" onclick="toggleLangMenu()">
+                    🌐 <span id="currentLangLabel">ESPAÑOL</span>
+                    <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" style="width:11px;height:11px">
+                        <path d="M1 1l4 4 4-4"/>
+                    </svg>
+                </button>
+                <div class="lang-menu" id="langMenu">
+                    <button onclick="setLang('es')">🇦🇷 ESPAÑOL</button>
+                    <button onclick="setLang('en')">🇺🇸 ENGLISH</button>
+                </div>
+            </div>
+            <a href="https://github.com/cobraxd67/juego/releases" target="_blank" rel="noopener" class="nav-cta"
+               data-es="Descargar juego" data-en="Download game">Descargar juego</a>
+        </div>
+
+    </div>
+</nav>
+
+<!-- ===== HEADER ===== -->
+<header>
+    <div class="header-bg"></div>
+    <div class="header-grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <div class="header-content">
+        <div class="badge" data-es="Proyecto Final — Programación" data-en="Final Project — Programming">Proyecto Final — Programación</div>
+        <h1>
+            <span class="gradient-text" data-es="Escapa de la" data-en="Escape the">Escapa de la</span><br>
+            <span data-es="Técnica" data-en="Technical School">Técnica</span>
+        </h1>
+        <p class="header-sub"
+           data-es="Un juego de aventura y trivia hecho en C++ para consola de Windows. Recorré los pasillos de la E.E.T N°2, y respondé correctamente para escapar antes de quedarte sin vidas."
+           data-en="An adventure and trivia game made in C++ for the Windows console. Walk through the halls of E.E.T No. 2, and answer correctly to escape before you run out of lives.">
+            Un juego de aventura y trivia hecho en C++ para consola de Windows. Recorré los pasillos de la E.E.T N°2, y respondé correctamente para escapar antes de quedarte sin vidas.
+        </p>
+        <div class="header-pills">
+            <a href="#descripcion" class="pill pill-primary" data-es="Ver el proyecto" data-en="See the project">Ver el proyecto</a>
+            <a href="#mecanicas" class="pill pill-outline" data-es="Cómo se juega" data-en="How to play">Cómo se juega</a>
+        </div>
+    </div>
+
+    <div class="scroll-hint">
+        <div class="scroll-line"></div>
+        <span data-es="scroll" data-en="scroll">scroll</span>
+    </div>
+</header>
+
+<div class="container">
+
+    <!-- ===== TARJETA DE PRESENTACIÓN (EDITAR ACÁ) ===== -->
+    <div class="credentials-card reveal">
+        <div class="cred-item">
+            <div class="cred-label" data-es="Alumno / Alumna" data-en="Student">Alumno / Alumna</div>
+            <div class="cred-value">Ornetti Agustin</div>
+        </div>
+        <div class="cred-item">
+            <div class="cred-label" data-es="Institución" data-en="School">Institución</div>
+            <div class="cred-value">E.E.T.N2</div>
+        </div>
+        <div class="cred-item">
+            <div class="cred-label" data-es="Año escolar" data-en="School year">Año escolar</div>
+            <div class="cred-value">5to 1ra</div>
+        </div>
+        <div class="cred-item">
+            <div class="cred-label" data-es="Materia" data-en="Subject">Materia</div>
+            <div class="cred-value">Programación</div>
+        </div>
+    </div>
+
+        <!-- TOC -->
+    <div class="toc reveal" id="indice">
+        <div class="toc-group">
+            <h4 data-es="El proyecto" data-en="The project">El proyecto</h4>
+            <a href="#descripcion" data-es="Descripción general" data-en="General description">Descripción general</a>
+            <a href="#argumento" data-es="Argumento" data-en="Story">Argumento</a>
+            <a href="#mecanicas" data-es="Mecánicas de juego" data-en="Gameplay mechanics">Mecánicas de juego</a>
+        </div>
+        <div class="toc-group">
+            <h4 data-es="Aspectos técnicos" data-en="Technical aspects">Aspectos técnicos</h4>
+            <a href="#materias" data-es="Materias y desafíos" data-en="Subjects & challenges">Materias y desafíos</a>
+            <a href="#tecnologias" data-es="Tecnologías usadas" data-en="Technologies used">Tecnologías usadas</a>
+            <a href="#codigo" data-es="Estructura del código" data-en="Code structure">Estructura del código</a>
+        </div>
+    </div>
+
+    <!-- Intro -->
+    <div class="intro-card reveal">
+        <p class="body-text"
+           data-es="“Escapa de la Técnica” es un juego de consola desarrollado en C++ como proyecto final de la materia. Combina exploración por mapas dibujados con matrices, un sistema de vida, y preguntas de trivia sobre distintas materias del colegio. El objetivo: recorrer la escuela, aprobar las materias y escapar antes de perder las tres vidas."
+           data-en="“Escape the Technical School” is a console game developed in C++ as a final class project. It combines exploration through matrix-drawn maps, a life system, and trivia questions about different school subjects. explore the school, pass the subjects, and escape before losing all three lives.">
+            "Escapa de la Técnica" es un juego de consola desarrollado en C++ como proyecto final de la materia. Combina exploración por mapas dibujados con matrices, un sistema de vida, y preguntas de trivia sobre distintas materias del colegio. El objetivo: El objetivo: recorrer la escuela, aprobar las materias y escapar antes de perder las tres vidas.
+        </p>
+    </div>
+
+        <hr class="divider">
+
+    <!-- Descripción -->
+    <section id="descripcion" class="reveal">
+        <span class="section-label" data-es="01 — El proyecto" data-en="01 — The project">01 — El proyecto</span>
+        <h1 class="section-title" data-es="¿Qué es “Escapa de la Técnica”?" data-en="What is “Escape the Technical School”?">¿Qué es "Escapa de la Técnica"?</h1>
+        <p class="body-text"
+           data-es="Es un juego de aventura desarrollado en C++, pensado para correr en la consola de Windows.Todo el juego —mapas, personajes, textos y animaciones— se dibuja con caracteres y bloques de color directamente en la terminal, sin usar motores gráficos externos."
+           data-en="It's an adventure game developed in C++, designed to run in the Windows console. The whole game —maps, characters, text and animations— is drawn with characters and colored blocks directly in the terminal, without using any external graphics engine.">
+            Es un juego de aventura desarrollado en C++, pensado para correr en la consola de Windows. Todo el juego —mapas, personajes, textos y animaciones— se dibuja con caracteres y bloques de color directamente en la terminal, sin usar motores gráficos externos.
+        </p>
+        <p class="body-text"
+           data-es="Fue pensado como un trabajo práctico que combina lógica de programación (matrices, funciones, punteros, referencias) con una idea propia y un sistema de preguntas y respuestas vinculado a otras materias del colegio."
+           data-en="It was designed as a practical assignment that combines programming logic (arrays, functions, pointers, references) with an original idea and a Q&A system tied to other school subjects.">
+            Fue pensado como un trabajo práctico que combina lógica de programación (matrices, funciones, punteros, referencias) con una idea propia y un sistema de preguntas y respuestas vinculado a otras materias del colegio.
+        </p>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Argumento -->
+    <section id="argumento" class="reveal">
+        <span class="section-label" data-es="02 — Historia" data-en="02 — Story">02 — Historia</span>
+        <h1 class="section-title" data-es="Argumento" data-en="Story">Historia</h1>
+        <div class="info-block reveal">
+            <div class="corner-accent"></div>
+            <p class="body-text"
+               data-es="El juego arranca con la pantalla de presentación de la “E.E.T N°2”, la escuela técnica donde transcurre toda la historia. El jugador controla a un/a estudiante que necesita recorrer los pasillos y aulas del colegio para poder salir de la tecnica."
+               data-en="The game starts with the title screen of “E.E.T No. 2”, the technical school where the whole story takes place. The player controls a student who needs to walk through the school's hallways and classrooms to reach the exit.">
+                El juego arranca con la pantalla de presentación de la "E.E.T N°2", la escuela técnica donde transcurre el juego. El jugador controla a un/a estudiante que necesita recorrer los pasillos y aulas del colegio para salir de la tecnica.
+            </p>
+            <p class="body-text"
+               data-es="Enn el camino se cruza con distintos profesores —de matemática, historia, electricidad, que son muy estrictos y no dejan pasar a nadie sin antes responder correctamente las preguntas de su materia. Cada error le cuesta una vida al jugador."
+               data-en="Along the way, they run into different teachers —math, history, electricity, IT, among others— who are very strict and won't let anyone through without first answering a question about their subject correctly. Every mistake costs the player a life.">
+                En el camino se cruza con distintos profesores —de matemática, historia, electricidad, que son muy estrictos y no dejan pasar a nadie sin antes responder correctamente las preguntas de su materia. Cada error le cuesta una vida al jugador.
+            </p>
+            <p class="body-text"
+               data-es="Si las tres vidas se pierden, la partida termina con una pantalla de Game Over, invitando a intentarlo de nuevo."
+               data-en="If all three lives are lost, ends with a Game Over screen, inviting the player to try again.">
+                Si las tres vidas se pierden, la partida termina con una pantalla de Game Over, invitando a intentarlo de nuevo.
+            </p>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Mecánicas -->
+    <section id="mecanicas" class="reveal">
+        <span class="section-label" data-es="03 — Cómo se juega" data-en="03 — Gameplay">03 — Cómo se juega</span>
+        <h1 class="section-title" data-es="Mecánicas de juego" data-en="Gameplay mechanics">Mecánicas de juego</h1>
+        <p class="body-text"
+           data-es="El juego se apoya en unos pocos sistemas centrales que se combinan entre sí a lo largo de todo el recorrido:"
+           data-en="The game relies on a few core systems that combine throughout the whole playthrough:">
+           El juego se apoya en unos pocos sistemas centrales que se combinan entre sí a lo largo de todo el recorrido:
+        </p>
+        <ul class="symptom-list">
+            <li data-es="Mapas por matrices: cada aula o pasillo es una matriz de 13×18 que se dibuja bloque por bloque, con colores distintos para paredes, pisos, puertas y personajes" data-en="Grid-based maps: each classroom or hallway is a 13×18 matrix drawn block by block, with different colors for walls, floors, doors and characters">Mapas por matrices: cada aula o pasillo es una matriz de 13×18 que se dibuja bloque por bloque, con colores distintos para paredes, pisos, puertas y personajes</li>
+            <li data-es="Movimiento restringido: el teclado se “bloquea” para aceptar solo las teclas de dirección válidas en cada momento, evitando movimientos o combinaciones inválidas" data-en="Restricted movement: the keyboard is “locked” to only accept the direction keys valid at each moment, avoiding invalid moves or key combinations">Movimiento restringido: el teclado se "bloquea" para aceptar solo las teclas de dirección válidas en cada momento, evitando movimientos o combinaciones inválidas</li>
+            <li data-es="Ransiciones entre mapas: al llegar a una puerta, el juego cambia de matriz y reubica al personaje en la nueva sala, dando sensación de recorrido continuo" data-en="Transitions between maps: reaching a door swaps the active matrix and repositions the character in the new room, giving a sense of continuous movement">Transiciones entre mapas: al llegar a una puerta, el juego cambia de matriz y reubica al personaje en la nueva sala, dando sensación de recorrido continuo</li>
+            <li data-es="Sistema de preguntas: al interactuar con un profesor se dispara una pregunta de opción múltiple relacionada con su materia; responder mal resta una vida" data-en="Question system: bumping into a teacher triggers a multiple-choice question related to their subject; a wrong answer costs one life">Sistema de preguntas: al chocar con un profesor se dispara una pregunta de opción múltiple relacionada con su materia; responder mal resta una vida</li>
+            <li data-es="Barra de vida visual: un contador gráfico en pantalla, hecho con bloques de color, muestra en tiempo real cuántas vidas le quedan al jugador"" data-en="Visual life bar: an on-screen graphical counter, made of colored blocks, shows in real time how many lives the player has left">Barra de vida visual: un contador gráfico en pantalla, hecho con bloques de color, muestra en tiempo real cuántas vidas le quedan al jugador</li>
+            <li data-es="Animaciones y sonido: dibujos hechos a base de caracteres y musica acompañando estos dibujos con (playsound)" data-en="Drawings featuring characters and music, with the drawings accompanied by sound effects (playsound)">Animaciones y sonido: dibujos hechos a base de caracteres y musica acompañando estos dibujos con (playsound)</li>
+        </ul>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Materias -->
+    <section id="materias" class="reveal">
+        <span class="section-label" data-es="04 — Desafíos" data-en="04 — Challenges">04 — Desafíos</span>
+        <h1 class="section-title" data-es="Materias y desafíos" data-en="Subjects & challenges">Materias y desafíos</h1>
+        <p class="body-text"
+           data-es="Cada profesor que aparece en el mapa está asociado a una materia real del colegio, y las preguntas que hace están pensadas para ese tema puntual:"
+           data-en="Every teacher that appears on the map is tied to a real school subject, and the questions they ask are written around that specific topic:">
+           Cada profesor que aparece en el mapa está asociado a una materia real del colegio, y las preguntas que hace están pensadas para ese tema puntual:
+        </p>
+        <div class="virus-grid">
+            <div class="virus-card reveal">
+                <div class="virus-icon">➗</div>
+                <h3 data-es="Profesor de Matemática" data-en="Math teacher">Profesor de Matemática</h3>
+                <p data-es="Preguntas de cálculo y lógica numérica. Es el primer profesor con el que se cruza el jugador al empezar el recorrido."
+                   data-en="Calculation and numerical logic questions. He's the first teacher the player runs into at the start of the run.">Preguntas de cálculo y lógica numérica. Es el primer profesor con el que se cruza el jugador al empezar el recorrido.</p>
+            </div>
+            <div class="virus-card reveal">
+                <div class="virus-icon">📜</div>
+                <h3 data-es="Profesora de Historia" data-en="History teacher">Profesora de Historia</h3>
+                <p data-es="Preguntas sobre hechos y fechas importantes. Su aula conecta con la zona de electricidad del mapa."
+                   data-en="Questions about important events and dates. Her classroom connects to the electricity area of the map.">Preguntas sobre hechos y fechas importantes. Su aula conecta con la zona de electricidad del mapa.</p>
+            </div>
+            <div class="virus-card reveal">
+                <div class="virus-icon">⚡</div>
+                <h3 data-es="Profesor de Electricidad" data-en="Electricity teacher">Profesor de Electricidad</h3>
+                <p data-es="Preguntas técnicas sobre circuitos y componentes eléctricos, en línea con la orientación técnica del colegio."
+                   data-en="Technical questions about circuits and electrical components, in line with the school's technical focus.">Preguntas técnicas sobre circuitos y componentes eléctricos, en línea con la orientación técnica del colegio.</p>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Tecnologías -->
+    <section id="tecnologias" class="reveal">
+        <span class="section-label" data-es="05 — Herramientas" data-en="05 — Tools">05 — Herramientas</span>
+        <h1 class="section-title" data-es="Tecnologías utilizadas" data-en="Technologies used">Tecnologías utilizadas</h1>
+        <p class="body-text"
+           data-es="Todo el juego está escrito en C++ estándar, apoyado en algunas librerías propias de Windows para lograr gráficos, sonido y control de teclado dentro de la consola:"
+           data-en="The whole game is written in standard C++, backed by a few Windows-specific libraries to achieve graphics, sound and keyboard control inside the console:">
+           Todo el juego está escrito en C++ estándar, apoyado en algunas librerías propias de Windows para lograr gráficos, sonido y control de teclado dentro de la consola:
+        </p>
+        <ul class="tech-list">
+            <li data-es="C++ estándar: matrices multidimensionales, funciones con paso por referencia y punteros para manejar mapas y estados del juego" data-en="Standard C++: multidimensional arrays, pass-by-reference functions and pointers to handle maps and game state">C++ estándar: matrices multidimensionales, funciones con paso por referencia y punteros para manejar mapas y estados del juego</li>
+            <li data-es="windows.h: control de la ventana de consola (tamaño, fuente, posición) y colores de texto por bloque" data-en="windows.h: console window control (size, font, position) and per-block text colors">windows.h: control de la ventana de consola (tamaño, fuente, posición) y colores de texto por bloque</li>
+            <li data-es="conio.h: lectura de teclado en tiempo real sin esperar a la tecla Enter, clave para el movimiento fluido" data-en="conio.h: real-time keyboard reading without waiting for Enter, key for smooth movement">conio.h: lectura de teclado en tiempo real sin esperar a la tecla Enter, clave para el movimiento fluido</li>
+            <li data-es="fstream: guardado y lectura de usuario y contraseña en archivos de texto para un sistema de sesión simple" data-en="fstream: saving and reading username and password from text files for a simple session system">fstream: guardado y lectura de usuario y contraseña en archivos de texto para un sistema de sesión simple</li>
+            <li data-es="mmsystem.h: reproducción de sonidos (PlaySound) para efectos como la explosión final" data-en="mmsystem.h: sound playback (PlaySound) for effects like the final explosion">mmsystem.h: reproducción de sonidos (PlaySound) para efectos como la explosión final</li>
+            <li data-es="gotoxy propia: función para posicionar el cursor y dibujar cada elemento en coordenadas exactas de la pantalla" data-en="custom gotoxy: a function to position the cursor and draw each element at exact screen coordinates">gotoxy propia: función para posicionar el cursor y dibujar cada elemento en coordenadas exactas de la pantalla</li>
+        </ul>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Estructura del código -->
+    <section id="codigo" class="reveal">
+        <span class="section-label" data-es="06 — Código" data-en="06 — Code">06 — Código</span>
+        <h1 class="section-title" data-es="Estructura del código" data-en="Code structure">Estructura del código</h1>
+        <p class="body-text"
+           data-es="El programa está organizado en funciones bien separadas, cada una encargada de una parte puntual del juego. Estas son algunas de las más importantes:"
+           data-en="The program is organized into clearly separated functions, each in charge of one specific part of the game. These are some of the most important ones:">
+           El programa está organizado en funciones bien separadas, cada una encargada de una parte puntual del juego. Estas son algunas de las más importantes:
+        </p>
+        <div class="av-cards">
+            <div class="av-card reveal">
+                <div class="av-num">01</div>
+                <h3 data-es="dibujarmapa()" data-en="dibujarmapa()">dibujarmapa()</h3>
+                <p data-es="Recorre la matriz del mapa actual y dibuja cada bloque en pantalla con su color correspondiente."
+                   data-en="Loops through the current map's matrix and draws each block on screen with its corresponding color.">Recorre la matriz del mapa actual y dibuja cada bloque en pantalla con su color correspondiente.</p>
+            </div>
+            <div class="av-card reveal">
+                <div class="av-num">02</div>
+                <h3 data-es="cambiarmapa() / transicion()" data-en="cambiarmapa() / transicion()">cambiarmapa() / transicion()</h3>
+                <p data-es="Se encargan de pasar de una sala a otra: cambian la matriz activa y reposicionan al personaje en la puerta de entrada."
+                   data-en="Handle moving from one room to another: they swap the active matrix and reposition the character at the entry door.">Se encargan de pasar de una sala a otra: cambian la matriz activa y reposicionan al personaje en la puerta de entrada.</p>
+            </div>
+            <div class="av-card reveal">
+                <div class="av-num">03</div>
+                <h3 data-es="elegiropcion()" data-en="elegiropcion()">elegiropcion()</h3>
+                <p data-es="Muestra las cuatro opciones de una pregunta, procesa la elección del jugador y descuenta vida si la respuesta es incorrecta."
+                   data-en="Shows the four options of a question, processes the player's choice and subtracts a life if the answer is wrong.">Muestra las cuatro opciones de una pregunta, procesa la elección del jugador y descuenta vida si la respuesta es incorrecta.</p>
+            </div>
+            <div class="av-card reveal">
+                <div class="av-num">04</div>
+                <h3 data-es="bloquear() / bloquearteclado()" data-en="bloquear() / bloquearteclado()">bloquear() / bloquearteclado()</h3>
+                <p data-es="Filtran qué teclas son válidas en cada momento del juego, evitando que el personaje se mueva hacia donde no debe."
+                   data-en="Filter which keys are valid at each moment of the game, preventing the character from moving where it shouldn't.">Filtran qué teclas son válidas en cada momento del juego, evitando que el personaje se mueva hacia donde no debe.</p>
+            </div>
+            <div class="av-card reveal">
+                <div class="av-num">05</div>
+                <h3 data-es="barradevida()" data-en="barradevida()">barradevida()</h3>
+                <p data-es="Dibuja el contador de vidas en pantalla y lo actualiza cada vez que el jugador responde mal una pregunta."
+                   data-en="Draws the life counter on screen and updates it every time the player answers a question incorrectly.">Dibuja el contador de vidas en pantalla y lo actualiza cada vez que el jugador responde mal una pregunta.</p>
+            </div>
+            <div class="av-card reveal">
+                <div class="av-num">06</div>
+                <h3 data-es="revisarMuerte()" data-en="revisarMuerte()">revisarMuerte()</h3>
+                <p data-es="Controlan la pantalla de Game Over cuando las vidas llegan a cero."
+                   data-en="Control the end-of-round animation and the Game Over screen when lives reach zero.">Controlan la animación de fin de partida y la pantalla de Game Over cuando las vidas llegan a cero.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback -->
+    <div class="feedback-section reveal">
+        <h3 data-es="¿Te gustó el proyecto?" data-en="Did you like the project?">¿Te gustó el proyecto?</h3>
+        <p data-es="Tu opinión me ayuda a seguir mejorando el juego." data-en="Your feedback helps me keep improving the game.">Tu opinión me ayuda a seguir mejorando el juego.</p>
+        <div class="feedback-btns">
+            <button class="fb-btn" id="btn-si" onclick="responder('si')"
+                    data-es="😊 Sí, me gustó" data-en="😊 Yes, I liked it">😊 Sí, me gustó</button>
+            <button class="fb-btn" id="btn-no" onclick="responder('no')"
+                    data-es="😐 Podría mejorar" data-en="😐 Could be better">😐 Podría mejorar</button>
+        </div>
+        <p id="fb-response"></p>
+    </div>
+
+</div>
+
+<!-- Banner -->
+<div class="bottom-banner" id="banner">
+    <div class="banner-text">
+        <span class="banner-dot"></span>
+        <span data-es="🎮 ¡Probá el juego ya!" data-en="🎮 Try the game now!">🎮 ¡Probá el juego ya!</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px">
+        <a href="https://github.com/cobraxd67/juego/releases" target="_blank" rel="noopener" class="banner-cta"
+           data-es="Descargar juego" data-en="Download game">Descargar juego</a>
+        <button class="banner-close" onclick="document.getElementById('banner').style.display='none'">×</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
